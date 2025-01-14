@@ -1,0 +1,12 @@
+version: 1.1
+tasks:
+- task: initializeVolume
+  inputs:
+    initialize: all
+- task: executeScript
+  inputs:
+  - frequency: once
+    type: powershell
+    runAs: localSystem
+    content: |-
+${indent(6, bootstrap)}

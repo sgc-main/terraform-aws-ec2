@@ -1,0 +1,56 @@
+formatter: markdown table
+
+output-values:
+  enabled: false
+  from: ""
+
+sort:
+  enabled: true
+  by: name
+
+output:
+  file: README.md
+  mode: inject
+
+settings:
+  color: true
+  escape: true
+  hide-empty: true
+  indent: 2
+  required: false
+  sensitive: true
+
+content: |-
+  {{ .Requirements }}
+
+  {{ .Providers }}
+
+  {{ .Resources }}
+
+  ## Examples
+
+  ### EC2 instance with EBS volume attachment  
+
+  Configuration in this directory creates EC2 instances, EBS volume and attach it together.  
+  Unspecified arguments for security group id and subnet are inherited from the default VPC.  
+  This example outputs instance id and EBS volume id.  
+  
+  main.tf
+  ```hcl
+  {{ include "examples/volume-attachment/main.tf" }}
+  ```  
+
+  variables.tf
+  ```hcl
+  {{ include "examples/volume-attachment/variables.tf" }}
+  ```  
+
+  outputs.tf
+  ```hcl
+  {{ include "examples/volume-attachment/outputs.tf" }}
+  ```  
+
+
+  {{ .Inputs }}
+
+  {{ .Outputs }}
