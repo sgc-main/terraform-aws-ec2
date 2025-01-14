@@ -23,13 +23,13 @@ locals {
     ]
 
     user_data_win = [
-      for script in local.bootstrap : templatefile("${path.module}/templates/userdata.tmpl", {
+      for script in local.bootstrap : templatefile("${path.module}/templates/userdata_win.tmpl", {
         bootstrap = script
       })
     ]
 
     user_data_lnx = [
-      for n in range(local.instance_count) : templatefile("${path.module}/templates/userdata.tmpl", {
+      for n in range(local.instance_count) : templatefile("${path.module}/templates/userdata_lnx.tmpl", {
         hostname            = local.instance_fqdn[n]
         partition_type      = var.partition_type
         enable_partitioning = var.enable_partitioning
